@@ -6,7 +6,10 @@
 
 <title>ثقافة تـــم</title>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -886,20 +889,9 @@ h1, h2, h3, h4, h5, h6, p, span, a, label, strong, small, div {
 
 // ملاحظة: هذه النسخة تحفظ البيانات داخل متصفح كل مستخدم فقط.
 // لكي يرى جميع الموظفين نفس البيانات نحتاج ربط الموقع بقاعدة بيانات مثل Firebase أو Supabase.
-let challenges =
-    JSON.parse(localStorage.getItem("doneCultureالتحديات")) || [];
-
-
-function saveالتحديات() {
-
-    localStorage.setItem(
-        "doneCultureالتحديات",
-        JSON.stringify(challenges)
-    );
-
-}
-
-
+const SUPABASE_URL = "https://fwtrvzqfsiuhgozsobbb.supabase.co";
+const SUPABASE_KEY = "sb_publishable_Pb9fqVxSJF_PH20VM06TPRg_mgVDFEcl";
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 function showChallengeForm() {
 
     document.getElementById("challengeForm").style.display = "block";
