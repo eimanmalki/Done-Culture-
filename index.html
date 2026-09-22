@@ -910,8 +910,7 @@ function hideChallengeForm() {
 }
 
 
-function addChallenge() {
-
+async function addChallenge() {
     const name =
         document.getElementById("employeeName").value.trim();
 
@@ -956,9 +955,14 @@ function addChallenge() {
     };
 
 
-    challenges.unshift(challenge);
+   const { error } = await supabaseClient
+    .from("challenges")
+    .insert([challenge]);
 
-    saveالتحديات();
+if (error) {
+    alert("حدث خطأ أثناء نشر التحدي: " + error.message);
+    return;
+}
 
     document.getElementById("employeeName").value = "";
     document.getElementById("employeeId").value = "";
